@@ -1,0 +1,21 @@
+// Override bootstrap4 colors for this project
+
+$primary:       #101010 ;
+$secondary:     #e71e6e ;
+
+
+// Override bootstrap4 max-width for "xl" container
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1170px
+);
+
+
+// Colors for review statistic
+
+$review-good: #b7ffb1;
+$review-neutral: #d7d7d7;
+$review-bad: #ffb1b1;
