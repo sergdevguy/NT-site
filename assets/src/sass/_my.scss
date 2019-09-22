@@ -177,3 +177,30 @@ header{
     }
 
 }
+
+
+
+
+//
+//
+// FOOTER
+//
+//
+
+footer{
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 23px 15px;
+
+    text-align: right;
+    letter-spacing: -5;
+    font-size: 14px;
+
+    .copyrite{
+        display: inline-block;
+    }
+
+    .footer-link{
+        margin-right: 18px;
+    }
+}
