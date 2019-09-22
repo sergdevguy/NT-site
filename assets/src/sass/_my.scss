@@ -170,8 +170,9 @@ header{
     }
 
     .poster-line__text{
-        max-width: 656px;
+        max-width: 671px;
         margin-top: 20px;
+        padding: 0 15px;
 
         line-height: 22px;
     }
@@ -188,6 +189,7 @@ header{
     .reviews-line__section{
         width: 25%;
         margin-right: 30px;
+        line-height: 20px;
 
         float: left;
 
@@ -227,6 +229,31 @@ header{
         padding: 70px 0;
     }
 
+}
+
+@media(max-width: 670px){
+    .article .reviews-line{
+        flex-direction: column;
+    }
+    .article .reviews-line__section{
+        width: 100%;
+        float: none;
+        padding: 0 50px;
+        margin-right: 0;
+        margin-top: 10px;
+
+        &:first-child{
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media(max-width: 420px){
+    .article .poster-line__img{
+        float: none;
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 
