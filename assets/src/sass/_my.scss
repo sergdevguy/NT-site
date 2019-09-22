@@ -12,6 +12,9 @@ li{
 }
 body{
     font-family: 'HelveticaNeueCyr Thin';
+    background-image: url(../img/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: 97% bottom;
 }
 p{
     margin: 0;
@@ -103,6 +106,7 @@ header{
 
     font-size: 18px;
     letter-spacing: -5;
+
 
     .article__section{
         display: inline-block;
