@@ -2,6 +2,10 @@
 
 a{
     color: #fff;
+
+    &:hover{
+        text-decoration: none;
+    }
 }
 ul{
     margin: 0;
@@ -30,9 +34,9 @@ p{
 //
 
 header{
-    padding: 50px 0 134px 0;
+    padding: 50px 0 133px 0;
 
-    background: url(../img/deadpool.jpg) no-repeat center;
+    background: url(../img/deadpool.jpg) no-repeat center bottom;
 
     // LEFT SIDE
 
@@ -64,6 +68,13 @@ header{
         width: 165px;
     }
 
+    .logo-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     .logo{
         width: 70px;
         height: 70px;
@@ -86,6 +97,38 @@ header{
 
             text-align: center;
             background-color: $secondary;
+
+            &:hover{
+                color: $primary;
+                background-color: #fff;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    header{
+        background-position: -80px bottom;
+        background-size: 100%;
+    }
+}
+@include media-breakpoint-down(xs) {
+    header{
+        background-position: center bottom;
+
+        .right-side{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: start;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .main-nav{
+            width: 165px;
+        }
+        .name{
+            font-size: 95px;
         }
     }
 }
@@ -163,6 +206,10 @@ header{
         display: flex;
         justify-content: center;
         align-items: center;
+
+        video{
+            width: 100%;
+        }
 
         .play-button{
             position: absolute;
