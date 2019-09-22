@@ -254,7 +254,6 @@ header{
         display: block;
         margin: 0 auto;
     }
-
 }
 
 
@@ -281,6 +280,10 @@ footer{
 
     .footer-link{
         margin-right: 18px;
+
+        &:hover{
+            color: $secondary;
+        }
     }
 }
 
