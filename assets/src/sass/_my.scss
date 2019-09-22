@@ -254,6 +254,7 @@ header{
         display: block;
         margin: 0 auto;
     }
+
 }
 
 
@@ -280,5 +281,12 @@ footer{
 
     .footer-link{
         margin-right: 18px;
+    }
+}
+
+@media(max-width: 420px){
+    footer .copyrite, footer .footer-link{
+        display: block;
+        margin-right: 0;
     }
 }
