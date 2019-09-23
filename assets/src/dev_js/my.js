@@ -148,4 +148,15 @@ $(document).ready(function () {
 
 
 
+  //
+  //
+  // DEADPOOL animation in header
+  //
+  //
+
+  $("header").css("background-position", "center bottom");
+
+
+
+
 });
