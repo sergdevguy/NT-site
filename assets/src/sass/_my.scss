@@ -371,6 +371,36 @@ header{
     }
 }
 
+.slider-img-popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+
+    .bg{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $secondary;
+        opacity: .9;
+        z-index: 101;
+        cursor: pointer;
+    }
+
+    img{
+        z-index: 102;
+        width: 40%;
+        min-width: 300px
+    }
+}
 
 
 

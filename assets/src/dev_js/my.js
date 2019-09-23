@@ -117,4 +117,35 @@ $(document).ready(function () {
 
 
 
+  //
+  //
+  // POPUP slider
+  //
+  //
+
+  // Show popup on click.
+  // Get img src from clicked to popup img.
+  $( ".img_container" ).each(function(i) {
+    $(this).on("click", function(){
+       var img_src = $(".slider__item:nth-child(" + (i + 1) + ") .slide-img").attr('src');
+       $(".slider-img-popup").css("display", "flex");
+       $(".slider-img-popup img").attr("src", img_src);
+       $(".slider-img-popup").animate({
+          opacity: 1
+       }), 500, function(){}
+    });
+  });
+
+  // Hide popup on click on bg
+  $(".slider-img-popup .bg").on("click", function(){
+    $(".slider-img-popup").animate({
+      opacity: 0
+    }, 500, function(){
+      $(".slider-img-popup").css("display", "none");
+    });
+  });
+
+
+
+
 });
