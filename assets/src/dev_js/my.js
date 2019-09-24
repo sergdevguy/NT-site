@@ -158,5 +158,31 @@ $(document).ready(function () {
 
 
 
+  //
+  //
+  // Make the end of word by number - положительнЫХ, положительнАЯ etc...
+  //
+  //
+
+  /*$(".reviews-num").each(function(index){
+
+    var name =  $(".num_:nth-child(" + (index+2) + ") .reviews-num-name").text();
+    name = name.substr(0, name.length - 2);
+
+    if($(this).text() == 0){
+      name += "ых";
+      $(".num_:nth-child(" + (index+2) + ") .reviews-num-name").text(name);
+    }else if($(this).text() == 1){
+      name += "ая";
+      $(".num_:nth-child(" + (index+2) + ") .reviews-num-name").text(name);
+    } else if($(this).text() <= 4 ){
+      name += "ые";
+      $(".num_:nth-child(" + (index+2) + ") .reviews-num-name").text(name);
+    }
+
+  })*/
+
+
+
 
 });
