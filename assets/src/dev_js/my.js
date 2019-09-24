@@ -185,4 +185,35 @@ $(document).ready(function () {
 
 
 
+  //
+  //
+  // Rating color-line in dependence of number in reviews section
+  //
+  //
+
+  var reviews_sum = 0;
+  var reviews_numbers = [];
+  var rating_colors = [
+    "#b7ffb1",
+    "#d7d7d7",
+    "#ffb1b1"
+  ];
+
+  // Sum of reviews
+  $(".reviews-num").each(function(){
+    reviews_sum += Number($(this).text());
+  });
+
+  // Numbers of reviews
+  $(".reviews-num").each(function(index){
+    reviews_numbers.push( $(this).text() );
+  });
+  
+  // Drow rating. Rating widht = reviews_numbers * 100 / reviews_sum
+  $(".rating").each(function(index){
+    var rating_width = reviews_numbers[index] * 100 / reviews_sum;
+    $(this).css({"width": rating_width + "%", "background-color": rating_colors[index]});
+  });
+
+
 });

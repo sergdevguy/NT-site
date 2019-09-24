@@ -195,6 +195,7 @@ header{
     }
 
     .reviews-line__section{
+        position: relative;
         width: 25%;
         margin-right: 30px;
         line-height: 20px;
@@ -206,6 +207,21 @@ header{
         }
         &:first-child{
             font-size: 24px;
+        }
+
+        p{
+            position: relative;
+            z-index: 5;
+        }
+    
+        .rating{
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            //width: 90%;
+            height: 100%;
+            //background-color: red;
         }
     }
 
