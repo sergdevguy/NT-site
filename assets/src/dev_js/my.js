@@ -125,22 +125,22 @@ $(document).ready(function () {
 
   // Show popup on click.
   // Get img src from clicked to popup img.
-  $( ".img_container" ).each(function(i) {
-    $(this).on("click", function(){
-       var img_src = $(".slider__item:nth-child(" + (i + 1) + ") .slide-img").attr('src');
-       $(".slider-img-popup").css("display", "flex");
-       $(".slider-img-popup img").attr("src", img_src);
-       $(".slider-img-popup").animate({
-          opacity: 1
-       }), 500, function(){}
+  $(".img_container").each(function (i) {
+    $(this).on("click", function () {
+      var img_src = $(".slider__item:nth-child(" + (i + 1) + ") .slide-img").attr('src');
+      $(".slider-img-popup").css("display", "flex");
+      $(".slider-img-popup img").attr("src", img_src);
+      $(".slider-img-popup").animate({
+        opacity: 1
+      }), 500, function () { }
     });
   });
 
   // Hide popup on click on bg
-  $(".slider-img-popup .bg").on("click", function(){
+  $(".slider-img-popup .bg").on("click", function () {
     $(".slider-img-popup").animate({
       opacity: 0
-    }, 500, function(){
+    }, 500, function () {
       $(".slider-img-popup").css("display", "none");
     });
   });
@@ -200,20 +200,107 @@ $(document).ready(function () {
   ];
 
   // Sum of reviews
-  $(".reviews-num").each(function(){
+  $(".reviews-num").each(function () {
     reviews_sum += Number($(this).text());
   });
 
   // Numbers of reviews
-  $(".reviews-num").each(function(index){
-    reviews_numbers.push( $(this).text() );
+  $(".reviews-num").each(function (index) {
+    reviews_numbers.push($(this).text());
   });
-  
+
   // Drow rating. Rating widht = reviews_numbers * 100 / reviews_sum
-  $(".rating").each(function(index){
+  $(".rating").each(function (index) {
     var rating_width = reviews_numbers[index] * 100 / reviews_sum;
-    $(this).css({"width": rating_width + "%", "background-color": rating_colors[index]});
+    $(this).css({ "width": rating_width + "%", "background-color": rating_colors[index] });
   });
+
+
+
+
+  //
+  //
+  // Main nav button
+  //
+  //
+
+
+  // Zoom circle
+  var toggleMenuMainMin = false;
+  $(".toggle-menu-button").click(function () {
+
+    if (toggleMenuMainMin == false) {
+
+      $(".nav-deadpoll").animate({
+        top: -90
+      }, 2500, function () {});
+      
+      toggleMenuMainMin = true;
+
+      $(".full-screen-field").css({
+        "left": $(".toggle-menu-button").offset().left + $(".toggle-menu-button").width() / 2 - 1500,
+        "top": $(".toggle-menu-button").offset().top + $(".toggle-menu-button").height() / 2 - 1500,
+        "opacity": "1"
+      });
+
+      $(".full-screen-field").css("display", "flex");
+      $(".full-screen-circle").animate({
+        width: 2700,
+        height: 2700
+      }, 1100, function () {
+        $(".full-screen-circle").css("display", "none");
+        $(".full-screen-field").css({ "left": "0", "top": "0", "width": "100%", "height": "100%", "background-color": "#e71e6e", "opacity": "1" });
+        $(".nav-min-menu").css("display", "block");
+
+        // Animation to li with delay for each
+        var timerTickSum = $(".nav-min-menu li").length;
+        var timerTick = 1;
+        $(".nav-min-menu li:nth-child(" + timerTick + ")").addClass('animated fadeInLeft');
+        setInterval(function () {
+          if (timerTick < timerTickSum) {
+            timerTick++;
+            $(".nav-min-menu li:nth-child(" + timerTick + ")").addClass('animated fadeInLeft');
+          } else {
+            timerTick = 1;
+            timerTickSum = 1;
+          }
+        }, 200);
+      });
+
+    } else {
+      toggleMenuMainMin = false;
+
+      $(".nav-deadpoll").css("top", "-900px");
+
+      $(".full-screen-field").animate({
+        opacity: 0
+      }, 300, function () {
+        $(".full-screen-field").css({ "display": "none", "width": "3000", "height": "3000", "background-color": "rgba(255, 255, 255, 0)" });
+        $(".nav-min-menu li").removeClass("animated fadeInLeft");
+        $(".full-screen-circle").css({ "display": "block", "width": "25", "height": "25" });
+        $(".nav-min-menu").css("display", "none");
+      });
+    }
+    
+  });
+
+  // links close nav
+  $(".nav-min-menu li a").click(function () {
+    toggleMenuMainMin = false;
+
+    $(".nav-deadpoll").css("top", "-900px");
+
+    $(".full-screen-field").animate({
+      opacity: 0
+    }, 300, function () {
+      $(".full-screen-field").css({ "display": "none", "width": "3000", "height": "3000", "background-color": "rgba(255, 255, 255, 0)" });
+      $(".nav-min-menu li").removeClass("animated fadeInLeft");
+      $(".full-screen-circle").css({ "display": "block", "width": "25", "height": "25" });
+      $(".nav-min-menu").css("display", "none");
+    });
+  });
+
+
 
 
 });
