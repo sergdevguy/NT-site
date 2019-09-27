@@ -11,14 +11,12 @@ $(document).ready(function () {
   //
 
   var multiItemSlider = (function () {
-    return function (selector, config) {
+    return function (selector) {
       var
         _mainElement = document.querySelector(selector), // основный элемент блока
         _sliderWrapper = _mainElement.querySelector('.slider__wrapper'), // обертка для .slider-item
         _sliderItems = _mainElement.querySelectorAll('.slider__item'), // элементы (.slider-item)
         _sliderControls = _mainElement.querySelectorAll('.slider__control'), // элементы управления
-        _sliderControlLeft = _mainElement.querySelector('.slider__control_left'), // кнопка "LEFT"
-        _sliderControlRight = _mainElement.querySelector('.slider__control_right'), // кнопка "RIGHT"
         _wrapperWidth = parseFloat(getComputedStyle(_sliderWrapper).width), // ширина обёртки
         _itemWidth = parseFloat(getComputedStyle(_sliderItems[0]).width), // ширина одного элемента    
         _positionLeftItem = 0, // позиция левого активного элемента
@@ -26,7 +24,7 @@ $(document).ready(function () {
         _step = _itemWidth / _wrapperWidth * 100, // величина шага (для трансформации)
         _items = []; // массив элементов
 
-      // наполнение массива _items
+      // Наполнение массива _items, добавляем все слайды в массив
       _sliderItems.forEach(function (item, index) {
         _items.push({ item: item, position: index, transform: 0 });
       });
@@ -100,19 +98,52 @@ $(document).ready(function () {
       // инициализация
       _setUpListeners();
 
+      var resetToDefault = function() {
+        // reset vars 
+        _wrapperWidth = parseFloat(getComputedStyle(_sliderWrapper).width);
+        _itemWidth = parseFloat(getComputedStyle(_sliderItems[0]).width);
+        _positionLeftItem = 0;
+        _transform = 0;
+        _step = _itemWidth / _wrapperWidth * 100;
+
+        // reset objects propertys in array _items
+        _items.forEach(function(item, index){
+          item.position = index;
+          item.transform = 0;
+        });
+      };
+
       return {
+        reset: function(){
+          resetToDefault();
+        },
         right: function () { // метод right
           _transformItem('right');
         },
         left: function () { // метод left
           _transformItem('left');
         }
+        
       }
 
     }
   }());
 
-  var slider = multiItemSlider('.slider')
+  var slider = multiItemSlider('.slider');
+
+  
+  window.onresize = function() {
+
+    // reset slider to start position
+    $(".slider__wrapper").attr("style", "transform:translateX(0)");
+    $(".slider__wrapper .slider__item").each(function(){
+      $(this).attr("style", "transform:translateX(0)");
+    });
+
+    slider.reset();
+    // end reset slider
+
+  };
 
 
 
